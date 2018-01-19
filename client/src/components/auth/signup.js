@@ -22,6 +22,16 @@ class Signup extends Component {
     this.props.signupUser(formProps);
   }
 
+  renderAlert() {
+    if (this.props.errorMessage) {
+      return (
+        <div className="alert alert-danger">
+          <strong>Oops!</strong> {this.props.errorMessage}
+        </div>
+      );
+    }
+  }
+
   render() {
     const { handleSubmit } = this.props;
     return (
@@ -47,6 +57,7 @@ class Signup extends Component {
           component={renderField}
           label="Password Confirm"
         />
+        {this.renderAlert()}
         <button action="submit" className="btn btn-primary">
           Sign Up!
         </button>
