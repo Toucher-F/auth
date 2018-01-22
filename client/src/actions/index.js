@@ -46,7 +46,7 @@ export function signupUser({ email, password }) {
       .post(`${ROOT_URL}/signup`, { email, password })
       .then(response => {
         dispatch({ type: AUTH_USER });
-        localStorage.setItem("token", response.token);
+        localStorage.setItem("token", response.data.token);
         browserHistory.push("/feature");
       })
       .catch(error => dispatch(authError(error.response.data.error)));
